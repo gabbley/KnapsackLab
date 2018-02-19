@@ -39,7 +39,8 @@ public class Knapsack {
 		else if (w[n] < limit)
 				listUse.add(w[n]);
 				useSum += knapsackSum(w, n-1, limit-w[n], listUse) + w[n];
-				listUse.add(w[n-1]);
+				
+				listDontUse.add(w[n-1]);
 				dontUseSum += knapsackSum(w, n-1, limit, listDontUse);
 				if (useSum>dontUseSum)
 					optimalSum += useSum;
