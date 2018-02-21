@@ -6,52 +6,59 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Knapsack {
-	
-	private String outputFile = "output.txt";
 
-	public static int knapsackSum(int[] w, int n, int limit){
+	private static String outputFile = "knapsack.txt";
+
+	public static int knapsackSum(int[] w, int n, int limit) {
 		int optimalSum = 0;
 		int useSum = 0;
 		int dontUseSum = 0;
-		
-		if (n<0)
+
+		if (n < 0)
 			optimalSum = 0;
 		else if (w[n] < limit)
-				useSum += knapsackSum(w, n-1, limit-w[n]) + w[n];
-				dontUseSum += knapsackSum(w, n-1, limit);
-				if (useSum>dontUseSum)
-					optimalSum += useSum;
-				else
-					optimalSum += dontUseSum;
-		
+			useSum += knapsackSum(w, n - 1, limit - w[n]) + w[n];
+		dontUseSum += knapsackSum(w, n - 1, limit);
+		if (useSum > dontUseSum)
+			optimalSum += useSum;
+		else
+			optimalSum += dontUseSum;
+
 		return optimalSum;
 	}
-	
-	public static int knapsackSum(int[] w, int n, int limit, ArrayList<Integer> list){
+
+	public static int knapsackSum(int[] w, int n, int limit, ArrayList<Integer> list) {
 		int optimalSum = 0;
 		int useSum = 0;
 		int dontUseSum = 0;
 		ArrayList<Integer> listUse = new ArrayList<Integer>();
 		ArrayList<Integer> listDontUse = new ArrayList<Integer>();
-		
-		if (n<0)
+
+		if (n < 0)
 			optimalSum = 0;
-		else if (w[n] < limit)
-				listUse.add(w[n]);
-				useSum += knapsackSum(w, n-1, limit-w[n], listUse) + w[n];
-				
-				listDontUse.add(w[n-1]);
-				dontUseSum += knapsackSum(w, n-1, limit, listDontUse);
-				if (useSum>dontUseSum)
-					optimalSum += useSum;
-				else
-					optimalSum += dontUseSum;
-				
-		
+
+		// use
+		if (w[n] < limit)
+			useSum = knapsackSum(w, n - 1, limit - w[n], listUse) + w[n];
+		else
+			useSum = 0;
+
+		// dont use
+		dontUseSum += knapsackSum(w, n - 1, limit, listDontUse);
+
+		if (useSum > dontUseSum) {
+			list.addAll(listUse);
+			optimalSum += useSum;
+		}
+		else{
+			list.addAll(listDontUse);
+			optimalSum += dontUseSum;
+		}
 		
 		return optimalSum;
+
 	}
-	
+
 	public static Scanner openFile(String filename) {
 
 		File f = new File(filename);
@@ -63,23 +70,34 @@ public class Knapsack {
 		}
 		return input;
 	}
-//
-//	public static PrintWriter canBeOpened(String filename, int part) {
-//
-//		File f = new File(filename);
-//		PrintWriter output = null;
-//		try {
-//			output = new PrintWriter(f);
-//		} catch (FileNotFoundException e) {
-//			PrintWriter out = new PrintWriter(outputFile);
-//			out.println("Part" + part + ": Unable to Open File");
-//			return null;
-//		}
-//		return output;
-//	}
-	
-	public static void main (String[] args){
-		
+
+	public static PrintWriter canBeOpened(String filename) throws FileNotFoundException {
+
+		File f = new File(filename);
+		PrintWriter output = null;
+		try {
+			output = new PrintWriter(f);
+		} catch (FileNotFoundException e) {
+			PrintWriter out = new PrintWriter(outputFile);
+			out.println("Unable to Open File");
+			return null;
+		}
+		return output;
 	}
+
 	
+
+	public static void main(String[] args) {
+		if (args.length < 1) {
+			System.out.println("Not enough files provided");
+			System.exit(1);
+		}
+
+		Scanner in = openFile(args[0]);
+		if (in == null)
+			System.exit(1);
+
+//		PrintWriter out = canBeOpened(args[0]);
+	}
+
 }
