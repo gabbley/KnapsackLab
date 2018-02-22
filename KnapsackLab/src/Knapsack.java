@@ -37,13 +37,11 @@ public class Knapsack {
 		if (n < 0)
 			optimalSum = 0;
 
-		// use
 		if (w[n] < limit)
 			useSum = knapsackSum(w, n - 1, limit - w[n], listUse) + w[n];
 		else
 			useSum = 0;
 
-		// dont use
 		dontUseSum += knapsackSum(w, n - 1, limit, listDontUse);
 
 		if (useSum > dontUseSum) {
