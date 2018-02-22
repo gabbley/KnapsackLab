@@ -83,7 +83,6 @@ public class Knapsack {
 		return output;
 	}
 	
-	
 
 	public static void main(String[] args) {
 		if (args.length < 1) {
@@ -95,13 +94,18 @@ public class Knapsack {
 		if (in == null)
 			System.exit(1);
 		else
-			while (in.hasNext()){
+			while (in.hasNext()){ 
 				System.out.println(in.nextLine());
+				organizeFile(in);
 			}
-		
-		PrintWriter out = writeToFile(args[0]);
-		
-			
+
+	}
+	
+	public static void organizeFile(Scanner in){
+		while (in.hasNext()){
+			Scanner test = openFile(in.nextLine());
+			System.out.println(test.next());
+		}
 	}
 
 }
