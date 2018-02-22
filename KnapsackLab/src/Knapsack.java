@@ -69,7 +69,7 @@ public class Knapsack {
 		return input;
 	}
 
-	public static PrintWriter canBeOpened(String filename) throws FileNotFoundException {
+	public static PrintWriter writeToFile(String filename) throws FileNotFoundException {
 
 		File f = new File(filename);
 		PrintWriter output = null;
@@ -82,7 +82,7 @@ public class Knapsack {
 		}
 		return output;
 	}
-
+	
 	
 
 	public static void main(String[] args) {
@@ -94,8 +94,14 @@ public class Knapsack {
 		Scanner in = openFile(args[0]);
 		if (in == null)
 			System.exit(1);
-
-//		PrintWriter out = canBeOpened(args[0]);
+		else
+			while (in.hasNext()){
+				System.out.println(in.nextLine());
+			}
+		
+		PrintWriter out = writeToFile(args[0]);
+		
+			
 	}
 
 }
