@@ -47,12 +47,11 @@ public class Knapsack {
 		if (useSum > dontUseSum) {
 			list.addAll(listUse);
 			optimalSum += useSum;
-		}
-		else{
+		} else {
 			list.addAll(listDontUse);
 			optimalSum += dontUseSum;
 		}
-		
+
 		return optimalSum;
 
 	}
@@ -82,9 +81,8 @@ public class Knapsack {
 		}
 		return output;
 	}
-	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		if (args.length < 1) {
 			System.out.println("Not enough files provided");
 			System.exit(1);
@@ -94,18 +92,58 @@ public class Knapsack {
 		if (in == null)
 			System.exit(1);
 		else
-			while (in.hasNext()){ 
-				System.out.println(in.nextLine());
+			while (in.hasNext()) {
 				organizeFile(in);
 			}
 
 	}
-	
-	public static void organizeFile(Scanner in){
-		while (in.hasNext()){
-			Scanner test = openFile(in.nextLine());
-			System.out.println(test.next());
+
+	public static void organizeFile(Scanner fileOfFiles) throws FileNotFoundException {
+		ArrayList<Integer> w;
+		// int[] w = new int[10];
+		int limit = 0;
+		PrintWriter out;
+
+		try {
+			out = writeToFile(outputFile);
+		} catch (FileNotFoundException e) {
+			out = new PrintWriter(new File(outputFile));
+			e.printStackTrace();
 		}
+
+		while (fileOfFiles.hasNext()) { // prints name of file
+			w = new ArrayList<Integer>();
+			String filename = fileOfFiles.nextLine();
+			out.print(filename + " ");
+			Scanner file = openFile(filename); // opens file from file of
+
+			if (file.hasNextInt()) {
+				limit = file.nextInt();
+				out.print(" limit: " + limit + "    ");
+			}
+
+			while (file.hasNextInt()) {
+				int weight = file.nextInt();
+				w.add(weight);
+				out.print(weight + ", ");
+			}
+
+			out.println(w.toString());
+			out.println("\n");
+
+		}
+
 	}
+
+	public static void printKnapsack(int[] w, int n, int limit, ArrayList<Integer> list) {
+
+	}
+
+	// public static int[] add(int[] arr, int n) {
+	// if (arr.length > 0)
+	// arr[arr.length - 1] = n;
+	// return arr;
+	//
+	// }
 
 }
