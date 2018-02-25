@@ -20,7 +20,7 @@ public class Knapsack {
 
 		if (w[n] <= limit)
 			useSum += knapsackSum(w, n - 1, limit - w[n]) + w[n];
-		dontUseSum += knapsackSum(w, n - 1, limit); // overflow
+		dontUseSum += knapsackSum(w, n - 1, limit); 
 		if (useSum > dontUseSum)
 			optimalSum += useSum;
 		else
@@ -40,7 +40,7 @@ public class Knapsack {
 			return 0;
 
 		if (w[n] <= limit)
-			useSum = knapsackSum(w, n - 1, limit - w[n], listUse) + w[n];
+			useSum = knapsackSum(w, n - 1, limit - w[n], listUse);
 		else
 			useSum = 0;
 
@@ -53,7 +53,7 @@ public class Knapsack {
 			list.addAll(listDontUse);
 			optimalSum += dontUseSum;
 		}
-
+		System.out.println(list.toString());
 		return optimalSum;
 
 	}
@@ -99,7 +99,6 @@ public class Knapsack {
 
 	public static void organizeFile(Scanner fileOfFiles) throws FileNotFoundException {
 		ArrayList<Integer> w;
-		// int[] w = new int[10];
 		int limit = 0;
 		PrintWriter out;
 
