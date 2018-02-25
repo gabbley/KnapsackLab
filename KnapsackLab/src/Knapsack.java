@@ -16,10 +16,11 @@ public class Knapsack {
 		int dontUseSum = 0;
 
 		if (n < 0)
-			optimalSum = 0;
-		else if (w[n] <= limit) 
+			return 0;
+
+		if (w[n] <= limit)
 			useSum += knapsackSum(w, n - 1, limit - w[n]) + w[n];
-		dontUseSum += knapsackSum(w, n - 1, limit); //overflow
+		dontUseSum += knapsackSum(w, n - 1, limit); // overflow
 		if (useSum > dontUseSum)
 			optimalSum += useSum;
 		else
@@ -36,9 +37,9 @@ public class Knapsack {
 		ArrayList<Integer> listDontUse = new ArrayList<Integer>();
 
 		if (n < 0)
-			optimalSum = 0;
+			return 0;
 
-		if (w[n] < limit)
+		if (w[n] <= limit)
 			useSum = knapsackSum(w, n - 1, limit - w[n], listUse) + w[n];
 		else
 			useSum = 0;
@@ -135,8 +136,12 @@ public class Knapsack {
 	}
 
 	public static void printKnapsack(int[] w, int limit, PrintWriter out) {
-		knapsackSum(w, w.length - 1, limit);
-		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit));
+		System.out.print("\nSimplified: ");
+		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit)+"\n");
+		
+		System.out.print("\nNot the Simplified: ");
+		knapsackSum(w, w.length - 1, limit, new ArrayList<Integer>());
+		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit)+"\n");
 	}
 
 	public static int[] listToArr(ArrayList<Integer> arr) {
@@ -147,11 +152,5 @@ public class Knapsack {
 		return w;
 	}
 
-	// public static int[] add(int[] arr, int n) {
-	// if (arr.length > 0)
-	// arr[arr.length - 1] = n;
-	// return arr;
-	//
-	// }
 
 }
