@@ -129,7 +129,7 @@ public class Knapsack {
 			}
 
 			printKnapsack(listToArr(w), limit, out);
-			// System.out.println(w.toString());
+			//System.out.println(w.toString());
 			System.out.println("\n");
 
 		}
@@ -142,8 +142,8 @@ public class Knapsack {
 		
 		System.out.print("\nNot the Simplified: ");
 		ArrayList<Integer> weights = new ArrayList<Integer>();
-		knapsackSum(w, w.length - 1, limit, weights);
-		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit));
+		//knapsackSum(w, w.length - 1, limit, weights);
+		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit, weights));
 	}
 
 	public static int[] listToArr(ArrayList<Integer> arr) {
