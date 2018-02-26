@@ -1,0 +1,127 @@
+test01.txt  limit: 1    2, 3, 5, 5, 
+
+
+Simplified: 
+Optimal Sum: 0
+
+Not the Simplified: 
+Optimal Sum: 0
+
+
+
+test02.txt  limit: 132    2, 17, 5, 3, 
+
+
+Simplified: 
+Optimal Sum: 27
+
+Not the Simplified: 
+Optimal Sum: 27
+1 watermelon of weight 3
+1 watermelon of weight 5
+1 watermelon of weight 17
+1 watermelon of weight 2
+
+
+
+test03.txt  limit: 100    25, 50, 
+
+
+Simplified: 
+Optimal Sum: 75
+
+Not the Simplified: 
+Optimal Sum: 75
+1 watermelon of weight 50
+1 watermelon of weight 25
+
+
+
+test04.txt  limit: 8    1, 3, 5, 
+
+
+Simplified: 
+Optimal Sum: 8
+
+Not the Simplified: 
+Optimal Sum: 8
+1 watermelon of weight 5
+1 watermelon of weight 3
+
+
+
+test05.txt  limit: 400    20, 36, 10, 30, 50, 
+
+
+Simplified: 
+Optimal Sum: 146
+
+Not the Simplified: 
+Optimal Sum: 146
+1 watermelon of weight 50
+1 watermelon of weight 30
+1 watermelon of weight 10
+1 watermelon of weight 36
+1 watermelon of weight 20
+
+
+
+test06.txt  limit: 310    30, 10, 10, 10, 10, 10, 10, 10, 10, 10, 2, 
+
+
+Simplified: 
+Optimal Sum: 122
+
+Not the Simplified: 
+Optimal Sum: 122
+1 watermelon of weight 2
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 10
+1 watermelon of weight 30
+
+
+
+test07.txt  limit: 10    1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 
+
+
+Simplified: 
+Optimal Sum: 10
+
+Not the Simplified: 
+Optimal Sum: 10
+1 watermelon of weight 10
+
+
+
+test08.txt  limit: 10    20, 
+
+
+Simplified: 
+Optimal Sum: 0
+
+Not the Simplified: 
+Optimal Sum: 0
+
+
+
+test09.txt  limit: 87    -1, 26, 55, 10, 22, 7, 22, 
+
+
+Simplified: 
+Optimal Sum: 87
+
+Not the Simplified: 
+Optimal Sum: 87
+1 watermelon of weight 22
+1 watermelon of weight 10
+1 watermelon of weight 55
+
+
+

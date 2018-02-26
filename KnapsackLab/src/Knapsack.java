@@ -1,7 +1,6 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -162,29 +161,30 @@ public class Knapsack {
 			e.printStackTrace();
 		}
 		
-		out.print("test");
 
 		while (fileOfFiles.hasNext()) { // prints name of file
 			w = new ArrayList<Integer>();
 			String filename = fileOfFiles.nextLine();
-			System.out.print(filename + " ");
+			out.print(filename + " ");
 			Scanner file = openFile(filename); // opens file from file
 
 			if (file.hasNextInt()) {
 				limit = file.nextInt();
-				System.out.print(" limit: " + limit + "    ");
+				out.print(" limit: " + limit + "    ");
 			}
 
 			while (file.hasNextInt()) {
 				int weight = file.nextInt();
 				w.add(weight);
-				System.out.print(weight + ", ");
+				out.print(weight + ", ");
 			}
 
 			printKnapsack(listToArr(w), limit, out);
-			System.out.println("\n");
+			out.println("\n");
 
 		}
+		
+		out.close();
 
 	}
 
@@ -202,13 +202,13 @@ public class Knapsack {
 	 * 	Object able to write to given file
 	 */
 	public static void printKnapsack(int[] w, int limit, PrintWriter out) {
-		System.out.print("\nSimplified: ");
-		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit)+"\n");
+		out.print("\n\n\nSimplified: ");
+		out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit)+"\n");
 		
-		System.out.print("\nNot the Simplified: ");
+		out.print("\nNot the Simplified: ");
 		ArrayList<Integer> weights = new ArrayList<Integer>();
-		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit, weights));
-		System.out.println("\n"+ printWeights(weights));
+		out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit, weights));
+		out.println("\n"+ printWeights(weights));
 	}
 
 	/**
