@@ -139,7 +139,8 @@ public class Knapsack {
 		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit)+"\n");
 		
 		System.out.print("\nNot the Simplified: ");
-		knapsackSum(w, w.length - 1, limit, new ArrayList<Integer>());
+		ArrayList<Integer> weights = new ArrayList<Integer>();
+		knapsackSum(w, w.length - 1, limit, weights);
 		System.out.print("\nOptimal Sum: " + knapsackSum(w, w.length - 1, limit)+"\n");
 	}
 
